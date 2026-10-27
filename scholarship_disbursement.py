@@ -51,9 +51,9 @@ def archive(database):
     print("Archiving awards")
 
 
-def bySchemeCount(database, scheme):
+def by_scheme_count(database, scheme):
     """Count awards for a scholarship scheme."""
-    if scheme == None:
+    if scheme is None:
         return 0
     return database.execute(
         "SELECT COUNT(*) FROM awards WHERE scheme = ?",
@@ -69,7 +69,7 @@ def main():
         paid = disburse(database, 1)
         missing = disburse(database, 9)
         print(paid, missing)
-        print(bySchemeCount(database, "Merit"), paid or 0)
+        print(by_scheme_count(database, "Merit"), paid or 0)
         archive(database)
 
 
